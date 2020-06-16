@@ -30,7 +30,7 @@ service.interceptors.request.use(config => {
 
 // 响应拦截
 service.interceptors.response.use(res => {
-  console.log('响应拦截',res)
+  // console.log('响应拦截',res)
   return res
 }, error => {
   // eslint-disable-next-line prefer-promise-reject-errors

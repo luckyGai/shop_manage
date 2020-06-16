@@ -65,7 +65,12 @@ export default {
   props: [],
   components: {},
   mounted() {},
-  created() {},
+  created() {
+    let token=localStorage.getItem('token')
+    if(token){
+      this.$router.push("/home");
+    }
+  },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
@@ -83,7 +88,7 @@ export default {
                 });
                 return;
               }
-              this.$router.push("/home");
+              this.$router.push(this.$route.query.redirect);
               this.$message({
                 message: "登录成功",
                 type: "success",

@@ -4,16 +4,16 @@
       <el-header>
         <el-row>
           <el-col :span="3"
-            ><div class="grid-content bg-purple">111</div></el-col
-          >
+            ><div class="grid-content bg-purple">
+              <img class="logo-img" src="../assets/login_bg.jpg" alt="" /></div
+          ></el-col>
           <el-col :span="18"
             ><div class="grid-content bg-purple">后台管理系统</div></el-col
           >
           <el-col :span="3"
             ><div class="grid-content bg-purple">
-              <el-button type="info" @click="outLogin('ruleForm')"
-                >退出</el-button
-              >
+              <!-- 退出登录弹框 -->
+              <el-button type="paimary" @click="outLogin">退出</el-button>
             </div></el-col
           >
         </el-row>
@@ -22,7 +22,7 @@
         <el-aside width="200px">
           <el-col :span="24">
             <el-menu
-              default-active="2"
+              default-active="/userlist"
               class="el-menu-vertical-demo el-menu"
               @open="handleOpen"
               @close="handleClose"
@@ -38,7 +38,7 @@
                   <span>用户管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="/home/userlist">
+                  <el-menu-item index="/userlist">
                     <i class="el-icon-s-grid"></i>
                     用户列表
                   </el-menu-item>
@@ -50,13 +50,13 @@
                   <span>权限管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="2-1">
+                  <el-menu-item index="/rolelist">
                     <i class="el-icon-location"></i>
                     角色列表
                   </el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group>
-                  <el-menu-item index="2-2">
+                  <el-menu-item index="/rightlist">
                     <i class="el-icon-location"></i>
                     权限列表
                   </el-menu-item>
@@ -133,6 +133,28 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    //退出登录
+    outLogin() {
+      this.$confirm("此操作将退出登录, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          localStorage.removeItem("token");
+          this.$router.push('/')
+          this.$message({
+            type: "success",
+            message: "退出成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "用户取消操作",
+          });
+        });
+    },
   },
 };
 </script>
@@ -140,6 +162,12 @@ export default {
 .home {
   width: 100%;
   height: 100%;
+}
+
+.logo-img {
+  width: 70px;
+  height: 40px;
+  margin-top: 10px;
 }
 .el-header,
 .el-footer {
@@ -174,6 +202,7 @@ export default {
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
 }
-.el-menu {
+.el-menu{
+  border-right: none !important;
 }
 </style>
