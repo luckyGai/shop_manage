@@ -142,7 +142,7 @@ export default {
       })
         .then(() => {
           localStorage.removeItem("token");
-          this.$router.push('/')
+          this.$router.push('/login')
           this.$message({
             type: "success",
             message: "退出成功!",

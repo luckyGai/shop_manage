@@ -9,10 +9,9 @@ const roleList = () => import('../views/rolelist')
 const rightList = () => import('../views/rightlist')
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'Login',
     component: Login,
-    redirectL:'/login'
   },
   {
     path: '/ind',

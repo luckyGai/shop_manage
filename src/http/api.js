@@ -98,3 +98,18 @@ export function getRightList() {
     method: 'get',
   })
 }
+//获取树形结构
+export function getRightTree() {
+  return request({
+    url: `rights/tree`,
+    method: 'get',
+  })
+}
+//分配权限给某个角色
+export function setRightsRole(roleId, data) {
+  return request({
+    url: `roles/${roleId}/rights`,
+    method: 'post',
+    data
+  })
+}

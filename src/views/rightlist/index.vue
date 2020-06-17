@@ -10,8 +10,8 @@
         </el-table-column>
         <el-table-column prop="level" label="等级">
           <template slot-scope="scope">
-            <el-tag type="success">
-              {{scope.row.row.level | levelFn}}
+            <el-tag :type="btnState[scope.row.level]">
+              {{scope.row.level | levelFn}}
             </el-tag>
           </template>
         </el-table-column>
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       rightList: [],
+      btnState:['danger','warning','success']
     };
   },
   props: {},

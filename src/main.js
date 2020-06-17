@@ -21,12 +21,12 @@ Vue.filter('date', function (t) {
   return moment(t).format("YYYY-MM-DD h:mm:ss a")
 })
 
-Vue.filter('levelFN', function (num) {
+Vue.filter('levelFn', function (num) {
   let result = ''
   switch (num) {
-    case '0': result = '一级'; break;
+    case '0': result = '三级'; break;
     case '1': result = '二级'; break;
-    case '2': result = '三级';break;
+    case '2': result = '一级';break;
   }
   return result
 })
@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(item => item.meta.Authorition)) {
     if (!token) {
       next({
-        path: '/',
+        path: '/login',
         query: { redirect: to.fullPath }
       })
     } else {
