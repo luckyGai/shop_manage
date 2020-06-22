@@ -68,7 +68,7 @@
                   <span>商品管理</span>
                 </template>
                 <el-menu-item-group>
-                  <el-menu-item index="3-1">
+                  <el-menu-item index="/goodslist">
                     <i class="el-icon-location"></i>
                     商品列表
                   </el-menu-item>
@@ -142,10 +142,10 @@ export default {
       })
         .then(() => {
           localStorage.removeItem("token");
-          this.$router.push('/login')
+          this.$router.push('/')
           this.$message({
-            type: "success",
-            message: "退出成功!",
+            type: "warning",
+            message: "用户退出登录!",
           });
         })
         .catch(() => {

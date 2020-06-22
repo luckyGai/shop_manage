@@ -37,6 +37,7 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
   if (to.matched.some(item => item.meta.Authorition)) {
     if (!token) {
+      console.log(to.fullPath)
       next({
         path: '/login',
         query: { redirect: to.fullPath }
@@ -45,6 +46,7 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
+    console.log(1111)
     next()
   }
 })

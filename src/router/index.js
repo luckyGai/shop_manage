@@ -7,9 +7,10 @@ const Ind = () => import('../views/ind.vue')
 const userList = () => import('../views/userlist')
 const roleList = () => import('../views/rolelist')
 const rightList = () => import('../views/rightlist')
+const goodsList = () => import('../views/goods/goodslist')
 const routes = [
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: Login,
   },
@@ -40,6 +41,11 @@ const routes = [
         path: '/rightlist',
         name: 'rightList',
         component: rightList
+      },
+      {
+        path: '/goodslist',
+        name: 'goodslist',
+        component: goodsList
       }
     ],
     redirect: '/userlist'

@@ -66,8 +66,8 @@ export default {
   components: {},
   mounted() {},
   created() {
-    let token=localStorage.getItem('token')
-    if(token){
+    let token = localStorage.getItem("token");
+    if (token) {
       this.$router.push("/home");
     }
   },
@@ -88,9 +88,11 @@ export default {
                 });
                 return;
               }
-              this.$router.push(this.$route.query.redirect);
-              this.$message({
-                message: "登录成功",
+              console.log(res.data.data)
+              this.$router.push(this.$route.query.redirect?this.$route.query.redirect:'/home');
+              this.$notify({
+                title: "登录成功",
+                message: `欢迎您,${res.data.data.username}`,
                 type: "success",
               });
             }
@@ -98,7 +100,7 @@ export default {
         } else {
           console.log("error submit!!");
           this.$message({
-            message: '格式填写不正确',
+            message: "格式填写不正确",
             type: "error",
           });
           return false;

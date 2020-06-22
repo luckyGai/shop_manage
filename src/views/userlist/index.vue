@@ -27,13 +27,13 @@
 
       <!-- 用户信息展示及编辑 -->
       <el-table :data="tableData" border style="width: 100%">
-        <el-table-column type="index" label="#" width="40"> </el-table-column>
-        <el-table-column prop="username" label="姓名" width="100">
+        <el-table-column align="center" type="index" label="#" width="40"> </el-table-column>
+        <el-table-column align="center" prop="username" label="姓名" width="100">
         </el-table-column>
-        <el-table-column prop="email" label="邮箱"> </el-table-column>
-        <el-table-column prop="mobile" label="电话"> </el-table-column>
-        <el-table-column prop="role_name" label="角色"> </el-table-column>
-        <el-table-column label="创建时间">
+        <el-table-column align="center" prop="email" label="邮箱"> </el-table-column>
+        <el-table-column align="center" prop="mobile" label="电话"> </el-table-column>
+        <el-table-column align="center" prop="role_name" label="角色"> </el-table-column>
+        <el-table-column align="center" label="创建时间">
           <template slot-scope="scope">
             <i class="el-icon-time"></i>
             <span style="margin-left: 10px">{{
@@ -41,7 +41,7 @@
             }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="" label="状态">
+        <el-table-column align="center" prop="" label="状态">
           <template slot-scope="scope">
             <el-switch
               v-model="scope.row.mg_state"
@@ -52,7 +52,7 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column prop="" label="操作" width="170">
+        <el-table-column align="center" prop="" label="操作" width="170">
           <template slot-scope="scope">
             <!-- 编辑按钮 -->
             <el-button
@@ -266,7 +266,7 @@ export default {
   components: {},
   mounted() {},
   created() {
-    console.dir(_);
+    // console.dir(_);
     this.getUserList();
   },
   methods: {
@@ -452,7 +452,7 @@ export default {
       if (status === 200) {
         let roleid = res1.data.data.rid;
         getUserRoleInfo(roleid).then((result) => {
-          console.log(result);
+          // console.log(result);
           if (!result.data.data) {
             this.$message({
               message: "用户没有分配到角色",
@@ -471,7 +471,7 @@ export default {
     //分配用户角色
     setUserRole() {
       setUserRole(this.setUserId, { rid: this.roleId }).then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           if (res.data.data) {
             this.$message({
@@ -502,5 +502,8 @@ export default {
   width: 300px;
   margin-right: 10px;
   margin-bottom: 20px;
+}
+.el-table{
+  background: yellowgreen;
 }
 </style>

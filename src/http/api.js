@@ -107,6 +107,7 @@ export function getRightTree() {
 }
 //分配权限给某个角色
 export function setRightsRole(roleId, data) {
+  console.log(roleId,data)
   return request({
     url: `roles/${roleId}/rights`,
     method: 'post',

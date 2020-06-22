@@ -107,6 +107,7 @@
 <script>
 import { getRoleList, getRightTree, setRightsRole } from "@/http/api.js";
 // import {treeToList} from '@/utils/tree.js'
+import { treeToList } from "@/utils/tree.js";
 export default {
   name: "",
   data() {
@@ -142,12 +143,16 @@ export default {
     },
     //打开分配权限弹框
     async setRoleList(row) {
-      console.log(row);
+      // console.log(row);
+
+      const checkArr = treeToList(row);
+      console.log(checkArr);
+
       this.currentId = row.id;
       this.dialogVisible = true;
       //调用树形结构数据
       let res = await getRightTree();
-      console.log(res);
+      // console.log(res);
       this.rightsTree = res.data.data;
     },
     handleClose(done) {
@@ -171,7 +176,7 @@ export default {
       //合并两个数组
       const resultArr = [...arr, ...arr2];
       console.log(resultArr);
-      let res = await setRightsRole(this.currentId,{rids: resultArr});
+      let res = await setRightsRole(this.currentId, { rids: resultArr });
       console.log(res);
       this.dialogVisible = false;
     },
